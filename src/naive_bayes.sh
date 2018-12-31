@@ -25,3 +25,12 @@ if ! [ -d enron1 ]
 # change into dir
 cd enron1
 
+# get counts of spam, ham, and overall
+Nspam= ls -l spam/*.tst | wc -l
+Nham= ls -l ham/*txt | wc -l
+Ntot = $Nspam+$Nham
+
+echo $Nspam spam examples
+echo $Nham ham examples
+
+# get counts containing word in spam and ham classes
