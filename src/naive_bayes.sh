@@ -34,3 +34,17 @@ echo $Nspam spam examples
 echo $Nham ham examples
 
 # get counts containing word in spam and ham classes
+Nword_spam= grep -il $word spam/*.txt | wc -l
+Nword_ham= grep -il $word ham/*.txt | wc -l
+
+echo $Nword_spam "spam examples containing word"
+echo $Nword_ham "ham examples containing word"
+
+# calculate probabilities using bash calculator
+Pspam= echo "scale=4; $Nspam / ($Nspam+$Nham)" | bc
+Pham= echo "scale=4; 1-$Pspam" | bc
+echo
+echo "estimated P(spam) = " $Pspam
+echo "estimated P(ham) = " $Pham
+
+
